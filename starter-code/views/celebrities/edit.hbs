@@ -1,0 +1,42 @@
+<section>
+    <h2>
+        Edit {{celebrity.name}}
+    </h2>
+
+    <form action="/celebrities/{{celebrity.id}}/edit" method="POST">
+
+        <label for="">Name</label>
+        <input type="text" name="name" value="{{celebrity.name}}" />
+
+        <label for="">Occupation</label>
+        <input type="text" name="occupation" value="{{celebrity.occupation}}" />
+
+        <label for="">Catch Phrase</label>
+        <input type="text" name="catchPhrase" value="{{celebrity.catchPhrase}}" />
+
+        <select name="movies">
+            <option value="">Choose Movie</option>
+            {{#each allMovies}}
+            {{!-- name is name of the author --}}
+            {{!-- book.author.name is name of the book author --}}
+
+            {{#eq name ../celebrity.movies.name}}
+            <option value="{{id}}" selected>{{name}}</option>
+            {{else}}
+            <option value="{{id}}">{{name}}</option>
+            {{/eq}}
+
+            {{/each}}
+        </select>
+
+        <button type="submit">Update</button>
+
+        <a href="/">
+            < </a>
+                <br>
+
+    </form>
+
+
+
+</section>
